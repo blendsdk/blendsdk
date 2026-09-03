@@ -1,0 +1,42 @@
+{
+  "name": "@blendsdk/i18n",
+  "version": "5.53.0",
+  "description": "Runtime-agnostic internationalization library",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./node": {
+      "types": "./dist/node.d.ts",
+      "import": "./dist/node.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/blendsdk/blendsdk.git",
+    "directory": "packages/i18n"
+  },
+  "scripts": {
+    "build": "rm -fR ./dist && tsc",
+    "test": "vitest run --reporter=verbose",
+    "test:fast": "vitest run --reporter=verbose",
+    "test:watch": "vitest watch --reporter=verbose",
+    "clean": "rm -fR ./dist"
+  },
+  "dependencies": {
+    "@blendsdk/stdlib": "5.53.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.2",
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.10"
+  },
+  "author": "TrueSoftware B.V.",
+  "license": "MIT",
+  "private": true
+}

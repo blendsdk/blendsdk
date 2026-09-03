@@ -1,0 +1,52 @@
+{
+  "name": "@blendsdk/webafx-cache",
+  "version": "5.53.0",
+  "description": "Application-wide caching and pub/sub plugin for WebAFX with Redis and In-Memory backends",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/blendsdk/blendsdk.git",
+    "directory": "packages/webafx-cache"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test:fast": "vitest run --reporter=verbose",
+    "test:watch": "vitest watch --reporter=verbose",
+    "clean": "rm -fR ./dist",
+    "test:coverage": "vitest run --coverage",
+    "dev": "tsc --watch",
+    "docker:up": "docker-compose -p webafx-cache -f ./docker/docker-compose${MODE}.yml up -d && sleep 5",
+    "docker:down": "docker-compose -p webafx-cache -f ./docker/docker-compose${MODE}.yml down -v --remove-orphans",
+    "docker:logs": "docker-compose -p webafx-cache -f ./docker/docker-compose${MODE}.yml logs redis-test",
+    "test": "yarn docker:down && yarn docker:up && vitest run --reporter=verbose && yarn docker:down"
+  },
+  "dependencies": {
+    "ioredis": "^6.0.0"
+  },
+  "devDependencies": {
+    "@blendsdk/webafx": "^5.53.0",
+    "@types/node": "^26.1.2",
+    "@vitest/coverage-v8": "^4.1.10",
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.10"
+  },
+  "peerDependencies": {
+    "@blendsdk/webafx": "^5.53.0"
+  },
+  "license": "MIT",
+  "peerDependenciesMeta": {
+    "@blendsdk/webafx": {
+      "optional": true
+    }
+  },
+  "private": true
+}

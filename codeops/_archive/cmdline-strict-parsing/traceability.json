@@ -1,0 +1,511 @@
+{
+  "feature": "cmdline-strict-parsing",
+  "nodes": [
+    {
+      "edges": [],
+      "id": "AMB-DESIGN",
+      "revision": "sha256:24a551a5e9cae1bb342880d52f7e79635df6281cb12be2631640ec03a337de38",
+      "risk": "high",
+      "semanticSources": [
+        {
+          "digest": "sha256",
+          "normalization": "utf8-lf-trim-trailing-v1",
+          "path": "codeops/features/cmdline-strict-parsing/plans/cmdline-strict-parsing/00-ambiguity-register.md",
+          "selector": {
+            "kind": "whole-file"
+          }
+        }
+      ],
+      "status": "resolved",
+      "title": "Strict parsing design decisions",
+      "type": "ambiguity",
+      "validations": []
+    },
+    {
+      "edges": [
+        {
+          "relation": "affected-by",
+          "target": "cmdline-strict-parsing/AMB-DESIGN"
+        },
+        {
+          "relation": "specified-by",
+          "target": "cmdline-strict-parsing/SPEC-COMPAT"
+        },
+        {
+          "relation": "specified-by",
+          "target": "cmdline-strict-parsing/SPEC-ERRORS"
+        },
+        {
+          "relation": "specified-by",
+          "target": "cmdline-strict-parsing/SPEC-PARSING"
+        }
+      ],
+      "id": "REQ-STRICT",
+      "revision": "sha256:d274e2f076e65f7c581daec4895aeb3bb049e566abb3120cafcffd21d49cfd6f",
+      "semanticSources": [
+        {
+          "digest": "sha256",
+          "normalization": "utf8-lf-trim-trailing-v1",
+          "path": "codeops/features/cmdline-strict-parsing/plans/cmdline-strict-parsing/01-requirements.md",
+          "selector": {
+            "kind": "whole-file"
+          }
+        }
+      ],
+      "status": "approved",
+      "title": "Opt-in fail-closed command-line parsing",
+      "type": "requirement",
+      "validations": [
+        {
+          "gate": "execution",
+          "relation": "specified-by",
+          "revision": "sha256:62fbdb073be887758e67a6864f2d9a3de20f5b2cf559321944d8c1946d5c25a1",
+          "upstream": "cmdline-strict-parsing/SPEC-COMPAT",
+          "validatedAt": "2026-07-31T09:33:57Z"
+        },
+        {
+          "gate": "execution",
+          "relation": "specified-by",
+          "revision": "sha256:3c3626e49afe739d962d8003efb2617565435614c69ec17817805136c7faa66a",
+          "upstream": "cmdline-strict-parsing/SPEC-ERRORS",
+          "validatedAt": "2026-07-31T09:33:57Z"
+        },
+        {
+          "gate": "execution",
+          "relation": "specified-by",
+          "revision": "sha256:d2f2fc22bdfdc8df1e8c0e917e4865a6f20f70cf3d2bdf988705a5735bdba6a9",
+          "upstream": "cmdline-strict-parsing/SPEC-PARSING",
+          "validatedAt": "2026-07-31T09:33:57Z"
+        },
+        {
+          "gate": "plan",
+          "relation": "specified-by",
+          "revision": "sha256:62fbdb073be887758e67a6864f2d9a3de20f5b2cf559321944d8c1946d5c25a1",
+          "upstream": "cmdline-strict-parsing/SPEC-COMPAT",
+          "validatedAt": "2026-07-31T09:33:57Z"
+        },
+        {
+          "gate": "plan",
+          "relation": "specified-by",
+          "revision": "sha256:3c3626e49afe739d962d8003efb2617565435614c69ec17817805136c7faa66a",
+          "upstream": "cmdline-strict-parsing/SPEC-ERRORS",
+          "validatedAt": "2026-07-31T09:33:57Z"
+        },
+        {
+          "gate": "plan",
+          "relation": "specified-by",
+          "revision": "sha256:d2f2fc22bdfdc8df1e8c0e917e4865a6f20f70cf3d2bdf988705a5735bdba6a9",
+          "upstream": "cmdline-strict-parsing/SPEC-PARSING",
+          "validatedAt": "2026-07-31T09:33:57Z"
+        }
+      ]
+    },
+    {
+      "edges": [
+        {
+          "relation": "accepted-by",
+          "target": "cmdline-strict-parsing/CRIT-STRICT"
+        }
+      ],
+      "id": "SPEC-PARSING",
+      "revision": "sha256:d2f2fc22bdfdc8df1e8c0e917e4865a6f20f70cf3d2bdf988705a5735bdba6a9",
+      "semanticSources": [
+        {
+          "digest": "sha256",
+          "normalization": "utf8-lf-trim-trailing-v1",
+          "path": "codeops/features/cmdline-strict-parsing/plans/cmdline-strict-parsing/03-01-parsing-and-recognition.md",
+          "selector": {
+            "kind": "whole-file"
+          }
+        }
+      ],
+      "status": "approved",
+      "title": "Exact token parsing and recognition",
+      "type": "specification",
+      "validations": [
+        {
+          "gate": "execution",
+          "relation": "accepted-by",
+          "revision": "sha256:a81d85503fc8e8e856c28ed89b934c33a6d890e8dab887116702c8fade947880",
+          "upstream": "cmdline-strict-parsing/CRIT-STRICT",
+          "validatedAt": "2026-07-31T09:33:57Z"
+        },
+        {
+          "gate": "plan",
+          "relation": "accepted-by",
+          "revision": "sha256:a81d85503fc8e8e856c28ed89b934c33a6d890e8dab887116702c8fade947880",
+          "upstream": "cmdline-strict-parsing/CRIT-STRICT",
+          "validatedAt": "2026-07-31T09:33:57Z"
+        }
+      ]
+    },
+    {
+      "edges": [
+        {
+          "relation": "accepted-by",
+          "target": "cmdline-strict-parsing/CRIT-STRICT"
+        }
+      ],
+      "id": "SPEC-ERRORS",
+      "revision": "sha256:3c3626e49afe739d962d8003efb2617565435614c69ec17817805136c7faa66a",
+      "semanticSources": [
+        {
+          "digest": "sha256",
+          "normalization": "utf8-lf-trim-trailing-v1",
+          "path": "codeops/features/cmdline-strict-parsing/plans/cmdline-strict-parsing/03-02-errors-and-diagnostics.md",
+          "selector": {
+            "kind": "whole-file"
+          }
+        }
+      ],
+      "status": "approved",
+      "title": "Typed errors and conservative diagnostics",
+      "type": "specification",
+      "validations": [
+        {
+          "gate": "execution",
+          "relation": "accepted-by",
+          "revision": "sha256:a81d85503fc8e8e856c28ed89b934c33a6d890e8dab887116702c8fade947880",
+          "upstream": "cmdline-strict-parsing/CRIT-STRICT",
+          "validatedAt": "2026-07-31T09:33:57Z"
+        },
+        {
+          "gate": "plan",
+          "relation": "accepted-by",
+          "revision": "sha256:a81d85503fc8e8e856c28ed89b934c33a6d890e8dab887116702c8fade947880",
+          "upstream": "cmdline-strict-parsing/CRIT-STRICT",
+          "validatedAt": "2026-07-31T09:33:57Z"
+        }
+      ]
+    },
+    {
+      "edges": [
+        {
+          "relation": "accepted-by",
+          "target": "cmdline-strict-parsing/CRIT-STRICT"
+        }
+      ],
+      "id": "SPEC-COMPAT",
+      "revision": "sha256:62fbdb073be887758e67a6864f2d9a3de20f5b2cf559321944d8c1946d5c25a1",
+      "semanticSources": [
+        {
+          "digest": "sha256",
+          "normalization": "utf8-lf-trim-trailing-v1",
+          "path": "codeops/features/cmdline-strict-parsing/plans/cmdline-strict-parsing/03-03-compatibility-and-activation.md",
+          "selector": {
+            "kind": "whole-file"
+          }
+        }
+      ],
+      "status": "approved",
+      "title": "Legacy compatibility and public API activation",
+      "type": "specification",
+      "validations": [
+        {
+          "gate": "execution",
+          "relation": "accepted-by",
+          "revision": "sha256:a81d85503fc8e8e856c28ed89b934c33a6d890e8dab887116702c8fade947880",
+          "upstream": "cmdline-strict-parsing/CRIT-STRICT",
+          "validatedAt": "2026-07-31T09:33:57Z"
+        },
+        {
+          "gate": "plan",
+          "relation": "accepted-by",
+          "revision": "sha256:a81d85503fc8e8e856c28ed89b934c33a6d890e8dab887116702c8fade947880",
+          "upstream": "cmdline-strict-parsing/CRIT-STRICT",
+          "validatedAt": "2026-07-31T09:33:57Z"
+        }
+      ]
+    },
+    {
+      "edges": [
+        {
+          "relation": "implemented-by",
+          "target": "cmdline-strict-parsing/TASK-PHASE-1"
+        },
+        {
+          "relation": "implemented-by",
+          "target": "cmdline-strict-parsing/TASK-PHASE-2"
+        },
+        {
+          "relation": "implemented-by",
+          "target": "cmdline-strict-parsing/TASK-PHASE-3"
+        },
+        {
+          "relation": "tested-by",
+          "target": "cmdline-strict-parsing/TEST-COMPAT"
+        },
+        {
+          "relation": "tested-by",
+          "target": "cmdline-strict-parsing/TEST-ERRORS"
+        },
+        {
+          "relation": "tested-by",
+          "target": "cmdline-strict-parsing/TEST-RECOGNITION"
+        }
+      ],
+      "id": "CRIT-STRICT",
+      "revision": "sha256:a81d85503fc8e8e856c28ed89b934c33a6d890e8dab887116702c8fade947880",
+      "semanticSources": [
+        {
+          "digest": "sha256",
+          "normalization": "utf8-lf-trim-trailing-v1",
+          "path": "codeops/features/cmdline-strict-parsing/plans/cmdline-strict-parsing/01-requirements.md",
+          "selector": {
+            "kind": "heading",
+            "value": "Acceptance Criteria"
+          }
+        }
+      ],
+      "status": "approved",
+      "title": "Strict parsing acceptance criteria",
+      "type": "criterion",
+      "validations": [
+        {
+          "gate": "execution",
+          "relation": "implemented-by",
+          "revision": "sha256:88e6aeaa9ba07f9dc3b9c0745ad1afc3ee6a6146207bd4ab8f169878d33b6641",
+          "upstream": "cmdline-strict-parsing/TASK-PHASE-1",
+          "validatedAt": "2026-07-31T09:33:57Z"
+        },
+        {
+          "gate": "execution",
+          "relation": "implemented-by",
+          "revision": "sha256:98de4e9cba5bd0a9e9a6d93275d250e0b9e61cb664af8b3f3e3a2676d4544310",
+          "upstream": "cmdline-strict-parsing/TASK-PHASE-2",
+          "validatedAt": "2026-07-31T09:33:57Z"
+        },
+        {
+          "gate": "execution",
+          "relation": "implemented-by",
+          "revision": "sha256:eff9f66b3d0dac2de18506a1dcbf21b2df4a94d0ffd044409ca2496fdda93b59",
+          "upstream": "cmdline-strict-parsing/TASK-PHASE-3",
+          "validatedAt": "2026-07-31T09:33:57Z"
+        }
+      ]
+    },
+    {
+      "edges": [],
+      "evidence": [
+        "greenEvidence:yarn workspace @blendsdk/cmdline build passed; strict-parsing.recognition.spec.test.ts passed all 33 expanded cases",
+        "redEvidence:Recognition oracle: 23 failed and 10 passed before implementation; public-export compile oracle: 9 expected TypeScript errors; public-API runtime oracle: 1 expected failure"
+      ],
+      "id": "TEST-RECOGNITION",
+      "revision": "sha256:d6e649d22002cc0660d9a4f673139ed06c3ba0a1538917fbac4aec21bb95ab57",
+      "semanticSources": [
+        {
+          "digest": "sha256",
+          "normalization": "utf8-lf-trim-trailing-v1",
+          "path": "codeops/features/cmdline-strict-parsing/plans/cmdline-strict-parsing/07-testing-strategy.md",
+          "selector": {
+            "kind": "heading",
+            "value": "Recognition and Handler Safety"
+          }
+        }
+      ],
+      "status": "passing",
+      "title": "Recognition and handler-safety specification tests",
+      "type": "test",
+      "validations": []
+    },
+    {
+      "edges": [],
+      "evidence": [
+        "greenEvidence:The authoritative package suite passes, including strict-parsing.errors.spec.test.ts.",
+        "redEvidence:12 failed and 9 passed before implementation; recorded in 99-execution-plan.md."
+      ],
+      "id": "TEST-ERRORS",
+      "revision": "sha256:3de578213f7d7fc2807b727085763efb6d7003d8402fc29e0d27b51156c8d518",
+      "semanticSources": [
+        {
+          "digest": "sha256",
+          "normalization": "utf8-lf-trim-trailing-v1",
+          "path": "codeops/features/cmdline-strict-parsing/plans/cmdline-strict-parsing/07-testing-strategy.md",
+          "selector": {
+            "kind": "heading",
+            "value": "Diagnostics and Error Hooks"
+          }
+        }
+      ],
+      "status": "passing",
+      "title": "Error and diagnostic specification tests",
+      "type": "test",
+      "validations": []
+    },
+    {
+      "edges": [],
+      "evidence": [
+        "greenEvidence:The authoritative package suite passes, including strict-parsing.compatibility.spec.test.ts.",
+        "redEvidence:14 failed and 11 passed before implementation; recorded in 99-execution-plan.md."
+      ],
+      "id": "TEST-COMPAT",
+      "revision": "sha256:515e49f4600b807f5d44df259eb8cb31eef6a2518ddfbcc027bdf4f14c5efe2c",
+      "semanticSources": [
+        {
+          "digest": "sha256",
+          "normalization": "utf8-lf-trim-trailing-v1",
+          "path": "codeops/features/cmdline-strict-parsing/plans/cmdline-strict-parsing/07-testing-strategy.md",
+          "selector": {
+            "kind": "heading",
+            "value": "Compatibility and Activated APIs"
+          }
+        }
+      ],
+      "status": "passing",
+      "title": "Compatibility and API activation specification tests",
+      "type": "test",
+      "validations": []
+    },
+    {
+      "edges": [],
+      "evidence": [
+        "verificationEvidence:Phase 1 build and specification checks pass within the authoritative 243-test package suite."
+      ],
+      "id": "TASK-PHASE-1",
+      "revision": "sha256:88e6aeaa9ba07f9dc3b9c0745ad1afc3ee6a6146207bd4ab8f169878d33b6641",
+      "semanticSources": [
+        {
+          "digest": "sha256",
+          "normalization": "utf8-lf-trim-trailing-v1",
+          "path": "codeops/features/cmdline-strict-parsing/plans/cmdline-strict-parsing/99-execution-plan.md",
+          "selector": {
+            "kind": "heading",
+            "value": "Phase 1: Exact Recognition and Value Consumption"
+          }
+        }
+      ],
+      "status": "verified",
+      "title": "Implement exact recognition and value consumption",
+      "type": "task",
+      "validations": []
+    },
+    {
+      "edges": [],
+      "evidence": [
+        "summary:Phase 2 implementation is present in the verified cmdline package history.",
+        "verificationEvidence:Phase 2 build, diagnostic tests, and bounded-work coverage pass within the authoritative package suite."
+      ],
+      "id": "TASK-PHASE-2",
+      "revision": "sha256:98de4e9cba5bd0a9e9a6d93275d250e0b9e61cb664af8b3f3e3a2676d4544310",
+      "semanticSources": [
+        {
+          "digest": "sha256",
+          "normalization": "utf8-lf-trim-trailing-v1",
+          "path": "codeops/features/cmdline-strict-parsing/plans/cmdline-strict-parsing/99-execution-plan.md",
+          "selector": {
+            "kind": "heading",
+            "value": "Phase 2: Typed Failures and Suggestions"
+          }
+        }
+      ],
+      "status": "verified",
+      "title": "Implement typed failures and suggestions",
+      "type": "task",
+      "validations": []
+    },
+    {
+      "edges": [],
+      "evidence": [
+        "summary:Phase 3 implementation and documentation are present and package verification passes.",
+        "verificationEvidence:Phase 3 build, 243 tests, per-file coverage, formatting, documentation assertions, and quality remediation pass."
+      ],
+      "id": "TASK-PHASE-3",
+      "revision": "sha256:eff9f66b3d0dac2de18506a1dcbf21b2df4a94d0ffd044409ca2496fdda93b59",
+      "semanticSources": [
+        {
+          "digest": "sha256",
+          "normalization": "utf8-lf-trim-trailing-v1",
+          "path": "codeops/features/cmdline-strict-parsing/plans/cmdline-strict-parsing/99-execution-plan.md",
+          "selector": {
+            "kind": "heading",
+            "value": "Phase 3: API Activation, Compatibility, and Documentation"
+          }
+        }
+      ],
+      "status": "verified",
+      "title": "Activate APIs and complete compatibility documentation",
+      "type": "task",
+      "validations": []
+    },
+    {
+      "edges": [
+        {
+          "relation": "depends-on",
+          "target": "cmdline-strict-parsing/REQ-STRICT"
+        },
+        {
+          "relation": "implemented-by",
+          "target": "cmdline-strict-parsing/TASK-PHASE-1"
+        },
+        {
+          "relation": "implemented-by",
+          "target": "cmdline-strict-parsing/TASK-PHASE-2"
+        },
+        {
+          "relation": "implemented-by",
+          "target": "cmdline-strict-parsing/TASK-PHASE-3"
+        }
+      ],
+      "evidence": [
+        "packages/cmdline/src/cmdline.ts",
+        "packages/cmdline/src/errors.ts",
+        "packages/cmdline/src/types.ts",
+        "summary:User accepted the complete ambiguity register, reconfirmed scope, and authorized this plan."
+      ],
+      "id": "PLAN-STRICT",
+      "revision": "sha256:d0d145cecccdabda2c97f5937af73498bec7dca267615f065ba3cdecd780c5c3",
+      "semanticSources": [
+        {
+          "digest": "sha256",
+          "normalization": "utf8-lf-trim-trailing-v1",
+          "path": "codeops/features/cmdline-strict-parsing/plans/cmdline-strict-parsing/00-index.md",
+          "selector": {
+            "kind": "whole-file"
+          }
+        }
+      ],
+      "status": "approved",
+      "title": "Cmdline strict parsing implementation plan",
+      "type": "plan",
+      "validations": [
+        {
+          "gate": "execution",
+          "relation": "depends-on",
+          "revision": "sha256:d274e2f076e65f7c581daec4895aeb3bb049e566abb3120cafcffd21d49cfd6f",
+          "upstream": "cmdline-strict-parsing/REQ-STRICT",
+          "validatedAt": "2026-07-31T09:33:57Z"
+        },
+        {
+          "gate": "execution",
+          "relation": "implemented-by",
+          "revision": "sha256:88e6aeaa9ba07f9dc3b9c0745ad1afc3ee6a6146207bd4ab8f169878d33b6641",
+          "upstream": "cmdline-strict-parsing/TASK-PHASE-1",
+          "validatedAt": "2026-07-31T09:33:57Z"
+        },
+        {
+          "gate": "execution",
+          "relation": "implemented-by",
+          "revision": "sha256:98de4e9cba5bd0a9e9a6d93275d250e0b9e61cb664af8b3f3e3a2676d4544310",
+          "upstream": "cmdline-strict-parsing/TASK-PHASE-2",
+          "validatedAt": "2026-07-31T09:33:57Z"
+        },
+        {
+          "gate": "execution",
+          "relation": "implemented-by",
+          "revision": "sha256:eff9f66b3d0dac2de18506a1dcbf21b2df4a94d0ffd044409ca2496fdda93b59",
+          "upstream": "cmdline-strict-parsing/TASK-PHASE-3",
+          "validatedAt": "2026-07-31T09:33:57Z"
+        },
+        {
+          "gate": "plan",
+          "relation": "depends-on",
+          "revision": "sha256:d274e2f076e65f7c581daec4895aeb3bb049e566abb3120cafcffd21d49cfd6f",
+          "upstream": "cmdline-strict-parsing/REQ-STRICT",
+          "validatedAt": "2026-07-31T09:33:57Z"
+        }
+      ]
+    }
+  ],
+  "schema": 2,
+  "updated": "2026-07-31T09:33:57Z"
+}

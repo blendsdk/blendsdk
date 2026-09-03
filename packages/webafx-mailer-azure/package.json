@@ -1,0 +1,43 @@
+{
+  "name": "@blendsdk/webafx-mailer-azure",
+  "version": "5.53.0",
+  "description": "Microsoft Graph email provider for BlendSDK WebAFX Mailer",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/blendsdk/blendsdk.git",
+    "directory": "packages/webafx-mailer-azure"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run --reporter=verbose",
+    "test:watch": "vitest watch --reporter=verbose",
+    "test:coverage": "vitest run --coverage",
+    "clean": "rm -fR ./dist",
+    "dev": "tsc --watch"
+  },
+  "dependencies": {
+    "@azure/msal-node": "^5.6.0"
+  },
+  "devDependencies": {
+    "@blendsdk/webafx-mailer": "^5.53.0",
+    "@types/node": "^26.1.2",
+    "@vitest/coverage-v8": "^4.1.10",
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.10"
+  },
+  "peerDependencies": {
+    "@blendsdk/webafx-mailer": "^5.53.0"
+  },
+  "license": "MIT",
+  "private": true
+}

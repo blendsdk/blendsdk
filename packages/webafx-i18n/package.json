@@ -1,0 +1,53 @@
+{
+  "name": "@blendsdk/webafx-i18n",
+  "version": "5.53.0",
+  "description": "WebAFX i18n plugin with multi-source translation loading",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/blendsdk/blendsdk.git",
+    "directory": "packages/webafx-i18n"
+  },
+  "scripts": {
+    "build": "rm -fR ./dist && tsc",
+    "test": "vitest run --reporter=verbose",
+    "test:fast": "vitest run --reporter=verbose",
+    "test:watch": "vitest watch --reporter=verbose",
+    "clean": "rm -fR ./dist"
+  },
+  "dependencies": {
+    "@blendsdk/i18n": "5.53.0"
+  },
+  "peerDependencies": {
+    "@blendsdk/webafx": "5.53.0",
+    "@blendsdk/webafx-cache": "5.53.0",
+    "@blendsdk/postgresql": "5.53.0"
+  },
+  "peerDependenciesMeta": {
+    "@blendsdk/webafx-cache": {
+      "optional": true
+    },
+    "@blendsdk/postgresql": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@blendsdk/webafx": "5.53.0",
+    "@blendsdk/webafx-cache": "5.53.0",
+    "@types/node": "^26.1.2",
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.10"
+  },
+  "author": "TrueSoftware B.V.",
+  "license": "MIT",
+  "private": true
+}

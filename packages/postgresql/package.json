@@ -1,0 +1,45 @@
+{
+  "name": "@blendsdk/postgresql",
+  "version": "5.53.0",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/blendsdk/blendsdk.git",
+    "directory": "packages/postgresql"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test:fast": "vitest run --reporter=verbose tests/statement-builders.test.ts",
+    "test:watch": "vitest watch --reporter=verbose",
+    "clean": "rm -fR ./dist",
+    "test:coverage": "vitest run --coverage",
+    "dev": "tsc --watch",
+    "db:up": "docker-compose -p postgresql -f ./docker/docker-compose${MODE}.yml up -d && sleep 5",
+    "db:down": "docker-compose -p postgresql -f ./docker/docker-compose${MODE}.yml down -v --remove-orphans",
+    "db:logs": "docker-compose -p postgresql -f ./docker/docker-compose${MODE}.yml logs postgres-test",
+    "test": "yarn db:down && yarn db:up && vitest run --reporter=verbose && yarn db:down"
+  },
+  "dependencies": {
+    "@blendsdk/dbcore": "^5.53.0",
+    "pg": "^8.22.0",
+    "yesql": "^7.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.2",
+    "@types/pg": "^8.20.0",
+    "@types/yesql": "^4.1.4",
+    "@vitest/coverage-v8": "^4.1.10",
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.10"
+  },
+  "private": true
+}

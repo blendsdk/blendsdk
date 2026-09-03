@@ -1,0 +1,5 @@
+# Docker Compose configuration for WebAFX tests
+# Currently no services are required for testing
+# If integration tests need external services in the future, add them here
+
+services: {}

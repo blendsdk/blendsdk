@@ -1,0 +1,40 @@
+{
+  "name": "@blendsdk/cmdline",
+  "version": "5.53.0",
+  "description": "A simple command line parser and options interpreter for TypeScript",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/blendsdk/blendsdk.git",
+    "directory": "packages/cmdline"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run --reporter=verbose",
+    "test:watch": "vitest watch --reporter=verbose",
+    "clean": "rm -fR ./dist",
+    "test:coverage": "vitest run --coverage",
+    "dev": "tsc --watch"
+  },
+  "dependencies": {
+    "@blendsdk/stdlib": "^5.53.0",
+    "damerau-levenshtein": "^1.0.8"
+  },
+  "devDependencies": {
+    "@types/damerau-levenshtein": "^1.0.2",
+    "@types/node": "^26.1.2",
+    "@vitest/coverage-v8": "^4.1.10",
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.10"
+  },
+  "private": true
+}

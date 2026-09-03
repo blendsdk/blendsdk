@@ -1,0 +1,35 @@
+{
+  "name": "@blendsdk/expression",
+  "version": "5.53.0",
+  "description": "Modern, type-safe SQL WHERE clause builder with fluent API",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/blendsdk/blendsdk.git",
+    "directory": "packages/expression"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run --reporter=verbose",
+    "test:watch": "vitest watch --reporter=verbose",
+    "clean": "rm -fR ./dist",
+    "test:coverage": "vitest run --coverage",
+    "dev": "tsc --watch"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.2",
+    "@vitest/coverage-v8": "^4.1.10",
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.10"
+  },
+  "private": true
+}

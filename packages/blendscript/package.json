@@ -1,0 +1,37 @@
+{
+  "name": "@blendsdk/blendscript",
+  "version": "5.53.0",
+  "description": "A small, safe expression language for business rules",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/blendsdk/blendsdk.git",
+    "directory": "packages/blendscript"
+  },
+  "scripts": {
+    "build": "tsc",
+    "type-check": "tsc --noEmit",
+    "test": "vitest run --reporter=verbose --exclude 'tests/distribution/**'",
+    "test:watch": "vitest watch --reporter=verbose --exclude 'tests/distribution/**'",
+    "test:coverage": "vitest run --coverage --exclude 'tests/distribution/**'",
+    "test:distribution": "tsc --ignoreConfig --noEmit --target ES2022 --module NodeNext --moduleResolution NodeNext --strict --skipLibCheck tests/distribution/public-api.spec-d.ts && vitest run --reporter=verbose tests/distribution/distribution.spec.test.ts tests/distribution/distribution.impl.test.ts",
+    "clean": "rm -fR ./dist",
+    "dev": "tsc --watch"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.2",
+    "@vitest/coverage-v8": "^4.1.10",
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.10"
+  },
+  "private": true
+}

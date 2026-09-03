@@ -1,0 +1,54 @@
+{
+  "name": "@blendsdk/webafx",
+  "version": "5.53.0",
+  "description": "Web application framework built on Express for BlendSDK",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/blendsdk/blendsdk.git",
+    "directory": "packages/webafx"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test:fast": "vitest run --reporter=verbose",
+    "test:watch": "vitest watch --reporter=verbose",
+    "clean": "rm -fR ./dist",
+    "test:coverage": "vitest run --coverage",
+    "dev": "tsc --watch",
+    "docker:up": "docker-compose -p webafx -f ./docker/docker-compose${MODE}.yml up -d && sleep 5",
+    "docker:down": "docker-compose -p webafx -f ./docker/docker-compose${MODE}.yml down -v --remove-orphans",
+    "test": "yarn docker:down && yarn docker:up && yarn test:fast"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "helmet": "^8.3.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.10",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.1.2",
+    "@types/supertest": "^7.2.1",
+    "@vitest/coverage-v8": "^4.1.10",
+    "supertest": "^7.2.2",
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.10"
+  },
+  "peerDependencies": {
+    "express": "^5.0.0",
+    "zod": "^4.0.0"
+  },
+  "private": true
+}

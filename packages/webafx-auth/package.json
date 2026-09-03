@@ -1,0 +1,55 @@
+{
+  "name": "@blendsdk/webafx-auth",
+  "version": "5.53.0",
+  "description": "Token validation and authentication plugin for WebAFX with JWT, OAuth2 introspection, OIDC, and multi-tenant providers",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/blendsdk/blendsdk.git",
+    "directory": "packages/webafx-auth"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test:fast": "vitest run --reporter=verbose",
+    "test:watch": "vitest watch --reporter=verbose",
+    "clean": "rm -fR ./dist",
+    "test:coverage": "vitest run --coverage",
+    "dev": "tsc --watch",
+    "test": "vitest run --reporter=verbose"
+  },
+  "dependencies": {
+    "jose": "^6.2.5",
+    "openid-client": "^6.8.4"
+  },
+  "devDependencies": {
+    "@blendsdk/webafx": "^5.53.0",
+    "@blendsdk/webafx-cache": "^5.53.0",
+    "@types/node": "^26.1.2",
+    "@vitest/coverage-v8": "^4.1.10",
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.10"
+  },
+  "peerDependencies": {
+    "@blendsdk/webafx": "^5.53.0",
+    "@blendsdk/webafx-cache": "^5.53.0"
+  },
+  "peerDependenciesMeta": {
+    "@blendsdk/webafx": {
+      "optional": true
+    },
+    "@blendsdk/webafx-cache": {
+      "optional": true
+    }
+  },
+  "license": "MIT",
+  "private": true
+}

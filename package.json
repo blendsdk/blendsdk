@@ -1,0 +1,66 @@
+{
+  "name": "@blendsdk/monorepo",
+  "version": "5.53.0",
+  "description": "BlendSDK v5 - Modern TypeScript SDK for Enterprise Applications",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.0.0",
+    "yarn": ">=1.22.0 <2.0.0"
+  },
+  "packageManager": "yarn@1.22.22",
+  "workspaces": [
+    "packages/*",
+    "packages/*/*"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "test": "turbo run test",
+    "test:watch": "turbo run test:watch",
+    "lint": "turbo run lint",
+    "lint:fix": "turbo run lint:fix",
+    "type-check": "turbo run type-check",
+    "clean": "yarn self:clean && turbo run clean",
+    "self:clean": "rm -rf .turbo",
+    "docs": "turbo run docs",
+    "docs:dev": "turbo run docs:dev",
+    "docs:generate": "tsx scripts/generate-techdocs.ts --verbose",
+    "docs:scaffold": "tsx scripts/generate-techdocs.ts --verbose --scaffold",
+    "docs:build": "tsx scripts/generate-techdocs.ts && cd packages/blendsdk-docs && npx vitepress build docs",
+    "docs:preview": "tsx scripts/generate-techdocs.ts && cd packages/blendsdk-docs && npx vitepress dev docs",
+    "lockstep": "tsx scripts/lockstep.ts",
+    "lockstep:version:auto": "tsx scripts/lockstep.ts version --type auto --ci",
+    "lockstep:version:patch": "tsx scripts/lockstep.ts version --type patch --ci",
+    "lockstep:version:minor": "tsx scripts/lockstep.ts version --type minor --ci",
+    "lockstep:version:major": "tsx scripts/lockstep.ts version --type major --ci",
+    "lockstep:publish:latest": "tsx scripts/lockstep.ts publish --tag latest --git-push",
+    "lockstep:publish:v55": "tsx scripts/lockstep.ts publish --tag v55 --git-push",
+    "ncu": "ncu -u --workspaces -x \"@blendsdk*\" && rm -fR node_modules yarn.lock && yarn install && yarn build && MODE=-ci yarn test"
+  },
+  "devDependencies": {
+    "@anthropic-ai/sdk": "^0.115.0",
+    "@manypkg/get-packages": "^3.1.0",
+    "npm-check-updates": "^23.0.0",
+    "openai": "^7.3.0",
+    "prettier": "^3.9.6",
+    "tsx": "^4.23.1",
+    "turbo": "^2.10.8",
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.10"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/blendsdk/blendsdk.git"
+  },
+  "author": "TrueSoftware B.V.",
+  "license": "MIT",
+  "keywords": [
+    "typescript",
+    "sdk",
+    "enterprise",
+    "web-framework",
+    "data-access",
+    "monorepo"
+  ]
+}

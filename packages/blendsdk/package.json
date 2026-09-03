@@ -1,0 +1,212 @@
+{
+  "name": "blendsdk",
+  "version": "5.53.0",
+  "description": "Enterprise-grade TypeScript SDK for web applications, database operations, caching, pub/sub, email, i18n, and code generation",
+  "type": "module",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "bin": {
+    "blendsdk": "./dist/codegen/cli.js"
+  },
+  "exports": {
+    "./stdlib": {
+      "types": "./dist/stdlib/index.d.ts",
+      "import": "./dist/stdlib/index.js"
+    },
+    "./cmdline": {
+      "types": "./dist/cmdline/index.d.ts",
+      "import": "./dist/cmdline/index.js"
+    },
+    "./expression": {
+      "types": "./dist/expression/index.d.ts",
+      "import": "./dist/expression/index.js"
+    },
+    "./blendscript": {
+      "types": "./dist/blendscript/index.d.ts",
+      "import": "./dist/blendscript/index.js"
+    },
+    "./dbcore": {
+      "types": "./dist/dbcore/index.d.ts",
+      "import": "./dist/dbcore/index.js"
+    },
+    "./postgresql": {
+      "types": "./dist/postgresql/index.d.ts",
+      "import": "./dist/postgresql/index.js"
+    },
+    "./webafx": {
+      "types": "./dist/webafx/index.d.ts",
+      "import": "./dist/webafx/index.js"
+    },
+    "./webafx-pino": {
+      "types": "./dist/webafx-pino/index.d.ts",
+      "import": "./dist/webafx-pino/index.js"
+    },
+    "./webafx-cache": {
+      "types": "./dist/webafx-cache/index.d.ts",
+      "import": "./dist/webafx-cache/index.js"
+    },
+    "./webafx-mailer": {
+      "types": "./dist/webafx-mailer/index.d.ts",
+      "import": "./dist/webafx-mailer/index.js"
+    },
+    "./webafx-mailer-azure": {
+      "types": "./dist/webafx-mailer-azure/index.d.ts",
+      "import": "./dist/webafx-mailer-azure/index.js"
+    },
+    "./webafx-auth": {
+      "types": "./dist/webafx-auth/index.d.ts",
+      "import": "./dist/webafx-auth/index.js"
+    },
+    "./i18n": {
+      "types": "./dist/i18n/index.d.ts",
+      "import": "./dist/i18n/index.js"
+    },
+    "./i18n-node": {
+      "types": "./dist/i18n/node.d.ts",
+      "import": "./dist/i18n/node.js"
+    },
+    "./webafx-i18n": {
+      "types": "./dist/webafx-i18n/index.d.ts",
+      "import": "./dist/webafx-i18n/index.js"
+    },
+    "./codegen": {
+      "types": "./dist/codegen/index.d.ts",
+      "import": "./dist/codegen/index.js"
+    },
+    "./react": {
+      "types": "./dist/react/index.d.ts",
+      "import": "./dist/react/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "build": "tsx ../../scripts/assemble.ts",
+    "clean": "rm -fR ./dist",
+    "prepack": "npm run build"
+  },
+  "dependencies": {
+    "damerau-levenshtein": "^1.0.8",
+    "jiti": "^2.7.0",
+    "prettier": "^3.9.6",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@blendsdk/stdlib": "5.53.0",
+    "@blendsdk/cmdline": "5.53.0",
+    "@blendsdk/expression": "5.53.0",
+    "@blendsdk/blendscript": "5.53.0",
+    "@blendsdk/dbcore": "5.53.0",
+    "@blendsdk/postgresql": "5.53.0",
+    "@blendsdk/webafx": "5.53.0",
+    "@blendsdk/webafx-pino": "5.53.0",
+    "@blendsdk/webafx-cache": "5.53.0",
+    "@blendsdk/webafx-mailer": "5.53.0",
+    "@blendsdk/webafx-mailer-azure": "5.53.0",
+    "@blendsdk/webafx-auth": "5.53.0",
+    "@blendsdk/i18n": "5.53.0",
+    "@blendsdk/webafx-i18n": "5.53.0",
+    "@blendsdk/codegen": "5.53.0",
+    "typescript": "^7.0.2"
+  },
+  "peerDependencies": {
+    "express": "^5.0.0",
+    "cookie-parser": "^1.4.0",
+    "cors": "^2.8.0",
+    "helmet": "^8.0.0",
+    "pg": "^8.18.0",
+    "yesql": "^7.0.0",
+    "ioredis": "^5.9.0",
+    "@azure/msal-node": "^5.6.0",
+    "nodemailer": "^7.0.0",
+    "jose": "^6.0.0",
+    "postgres-array": "^3.0.0",
+    "pino": "^9.0.0",
+    "pino-http": "^10.0.0",
+    "pino-pretty": ">=11.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router": "^7.0.0"
+  },
+  "peerDependenciesMeta": {
+    "express": {
+      "optional": true
+    },
+    "cookie-parser": {
+      "optional": true
+    },
+    "cors": {
+      "optional": true
+    },
+    "helmet": {
+      "optional": true
+    },
+    "pg": {
+      "optional": true
+    },
+    "yesql": {
+      "optional": true
+    },
+    "ioredis": {
+      "optional": true
+    },
+    "@azure/msal-node": {
+      "optional": true
+    },
+    "nodemailer": {
+      "optional": true
+    },
+    "jose": {
+      "optional": true
+    },
+    "postgres-array": {
+      "optional": true
+    },
+    "pino": {
+      "optional": true
+    },
+    "pino-http": {
+      "optional": true
+    },
+    "pino-pretty": {
+      "optional": true
+    },
+    "react": {
+      "optional": true
+    },
+    "react-dom": {
+      "optional": true
+    },
+    "react-router": {
+      "optional": true
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/blendsdk/blendsdk.git"
+  },
+  "author": "TrueSoftware B.V.",
+  "license": "MIT",
+  "keywords": [
+    "typescript",
+    "sdk",
+    "enterprise",
+    "web-framework",
+    "express",
+    "database",
+    "postgresql",
+    "cache",
+    "redis",
+    "email",
+    "i18n",
+    "code-generation",
+    "monorepo"
+  ]
+}

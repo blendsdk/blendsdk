@@ -1,0 +1,359 @@
+/**
+ * Performance benchmarks for expression2
+ */
+
+import { describe, it, expect } from 'vitest';
+import { query } from '../src/index.js';
+
+describe('Expression2 - Performance Benchmarks', () => {
+  describe('Compilation speed', () => {
+    it('should compile simple query quickly', () => {
+      const iterations = 1000;
+      const start = performance.now();
+
+      for (let i = 0; i < iterations; i++) {
+        query()
+          .where('status').equals('active')
+          .compile();
+      }
+
+      const end = performance.now();
+      const avgTime = (end - start) / iterations;
+
+      console.log(`Simple query: ${avgTime.toFixed(3)}ms per compilation`);
+      expect(avgTime).toBeLessThan(1); // Should be under 1ms
+    });
+
+    it('should compile complex query efficiently', () => {
+      const iterations = 1000;
+      const start = performance.now();
+
+      for (let i = 0; i < iterations; i++) {
+        query()
+          .where('status').equals('active')
+          .and('age').greaterThan(18)
+          .and(q => q
+            .where('verified').equals(true)
+            .or('premium').equals(true)
+          )
+          .and('deleted_at').isNull()
+          .compile();
+      }
+
+      const end = performance.now();
+      const avgTime = (end - start) / iterations;
+
+      console.log(`Complex query: ${avgTime.toFixed(3)}ms per compilation`);
+      expect(avgTime).toBeLessThan(2); // Should be under 2ms
+    });
+
+    it('should handle deeply nested queries efficiently', () => {
+      const iterations = 500;
+      const start = performance.now();
+
+      for (let i = 0; i < iterations; i++) {
+        query()
+          .where('a').equals(1)
+          .and(q1 => q1
+            .where('b').equals(2)
+            .and(q2 => q2
+              .where('c').equals(3)
+              .and(q3 => q3
+                .where('d').equals(4)
+                .or('e').equals(5)
+              )
+            )
+          )
+          .compile();
+      }
+
+      const end = performance.now();
+      const avgTime = (end - start) / iterations;
+
+      console.log(`Deeply nested query: ${avgTime.toFixed(3)}ms per compilation`);
+      expect(avgTime).toBeLessThan(3); // Should be under 3ms
+    });
+
+    it('should handle large IN arrays efficiently', () => {
+      const iterations = 500;
+      const values = Array.from({ length: 100 }, (_, i) => i);
+      const start = performance.now();
+
+      for (let i = 0; i < iterations; i++) {
+        query()
+          .where('id').in(values)
+          .compile();
+      }
+
+      const end = performance.now();
+      const avgTime = (end - start) / iterations;
+
+      console.log(`Large IN array (100 items): ${avgTime.toFixed(3)}ms per compilation`);
+      expect(avgTime).toBeLessThan(2); // Should be under 2ms
+    });
+  });
+
+  describe('Memory efficiency', () => {
+    it('should not leak memory with repeated compilations', () => {
+      const iterations = 10000;
+      const memBefore = process.memoryUsage().heapUsed;
+
+      for (let i = 0; i < iterations; i++) {
+        query()
+          .where('status').equals('active')
+          .and('age').greaterThan(18)
+          .compile();
+      }
+
+      // Force garbage collection if available
+      if (global.gc) {
+        global.gc();
+      }
+
+      const memAfter = process.memoryUsage().heapUsed;
+      const memDiff = (memAfter - memBefore) / 1024 / 1024; // MB
+
+      console.log(`Memory usage after ${iterations} compilations: ${memDiff.toFixed(2)}MB`);
+      expect(memDiff).toBeLessThan(10); // Should use less than 10MB
+    });
+
+    it('should handle large query chains without excessive memory', () => {
+      let q = query().where('a').equals(1);
+
+      for (let i = 2; i <= 100; i++) {
+        q = q.and(`col${i}`).equals(i);
+      }
+
+      const memBefore = process.memoryUsage().heapUsed;
+      const result = q.compile();
+      const memAfter = process.memoryUsage().heapUsed;
+      const memDiff = (memAfter - memBefore) / 1024; // KB
+
+      console.log(`Memory for 100-condition query: ${memDiff.toFixed(2)}KB`);
+      expect(result.sql.split('AND').length).toBe(100);
+      expect(memDiff).toBeLessThan(500); // Should use less than 500KB
+    });
+  });
+
+  describe('Parameter management efficiency', () => {
+    it('should handle many parameters efficiently', () => {
+      const iterations = 1000;
+      const start = performance.now();
+
+      for (let i = 0; i < iterations; i++) {
+        const q = query();
+        for (let j = 0; j < 50; j++) {
+          q.and(`col${j}`).equals(j);
+        }
+        q.compile();
+      }
+
+      const end = performance.now();
+      const avgTime = (end - start) / iterations;
+
+      console.log(`50 parameters: ${avgTime.toFixed(3)}ms per compilation`);
+      expect(avgTime).toBeLessThan(5); // Should be under 5ms
+    });
+
+    it('should handle parameter reuse efficiently', () => {
+      const iterations = 1000;
+      const start = performance.now();
+
+      for (let i = 0; i < iterations; i++) {
+        query()
+          .where('a').equals('value')
+          .and('b').equals('value')
+          .and('c').equals('value')
+          .compile();
+      }
+
+      const end = performance.now();
+      const avgTime = (end - start) / iterations;
+
+      console.log(`Parameter reuse: ${avgTime.toFixed(3)}ms per compilation`);
+      expect(avgTime).toBeLessThan(1); // Should be under 1ms
+    });
+  });
+
+  describe('JSON operations performance', () => {
+    it('should handle JSON operations efficiently', () => {
+      const iterations = 1000;
+      const jsonData = {
+        user: {
+          profile: {
+            name: 'John',
+            age: 30,
+            settings: {
+              theme: 'dark',
+              notifications: true
+            }
+          }
+        }
+      };
+
+      const start = performance.now();
+
+      for (let i = 0; i < iterations; i++) {
+        query()
+          .where('data').jsonContains(jsonData)
+          .and('metadata').jsonHasKey('email')
+          .compile();
+      }
+
+      const end = performance.now();
+      const avgTime = (end - start) / iterations;
+
+      console.log(`JSON operations: ${avgTime.toFixed(3)}ms per compilation`);
+      expect(avgTime).toBeLessThan(2); // Should be under 2ms
+    });
+  });
+
+  describe('Full-text search performance', () => {
+    it('should handle full-text search efficiently', () => {
+      const iterations = 1000;
+      const start = performance.now();
+
+      for (let i = 0; i < iterations; i++) {
+        query()
+          .search(['title', 'content', 'description'], 'search term')
+          .compile();
+      }
+
+      const end = performance.now();
+      const avgTime = (end - start) / iterations;
+
+      console.log(`Full-text search: ${avgTime.toFixed(3)}ms per compilation`);
+      expect(avgTime).toBeLessThan(2); // Should be under 2ms
+    });
+  });
+
+  describe('Comparison with baseline', () => {
+    it('should have acceptable absolute performance', () => {
+      const iterations = 1000;
+
+      // Expression2 approach
+      const expr2Start = performance.now();
+      for (let i = 0; i < iterations; i++) {
+        query()
+          .where('status').equals('active')
+          .and('age').greaterThan(18)
+          .and(q => q
+            .where('verified').equals(true)
+            .or('premium').equals(true)
+          )
+          .compile();
+      }
+      const expr2End = performance.now();
+      const expr2Time = (expr2End - expr2Start) / iterations;
+
+      console.log(`Expression2 complex query: ${expr2Time.toFixed(3)}ms per compilation`);
+      console.log(`Throughput: ${(1000 / expr2Time).toFixed(0)} queries/second`);
+
+      // Expression2 provides type safety, validation, and a fluent API
+      // The absolute performance is still excellent for a query builder
+      expect(expr2Time).toBeLessThan(0.1); // Should be under 0.1ms per query
+    });
+  });
+
+  describe('Scalability tests', () => {
+    it('should scale linearly with query complexity', () => {
+      const sizes = [10, 20, 50, 100];
+      const times: number[] = [];
+
+      for (const size of sizes) {
+        let q = query().where('a').equals(1);
+        for (let i = 2; i <= size; i++) {
+          q = q.and(`col${i}`).equals(i);
+        }
+
+        const start = performance.now();
+        for (let i = 0; i < 100; i++) {
+          q.compile();
+        }
+        const end = performance.now();
+        times.push((end - start) / 100);
+      }
+
+      console.log('Scalability (conditions -> avg time):');
+      sizes.forEach((size, i) => {
+        console.log(`  ${size} conditions: ${times[i].toFixed(3)}ms`);
+      });
+
+      // Check that growth is roughly linear (not exponential)
+      const ratio1 = times[1] / times[0]; // 20/10
+      const ratio2 = times[2] / times[1]; // 50/20
+      const ratio3 = times[3] / times[2]; // 100/50
+
+      console.log(`Growth ratios: ${ratio1.toFixed(2)}x, ${ratio2.toFixed(2)}x, ${ratio3.toFixed(2)}x`);
+
+      // Ratios should be relatively consistent (linear growth)
+      expect(Math.abs(ratio2 - ratio1)).toBeLessThan(2);
+      expect(Math.abs(ratio3 - ratio2)).toBeLessThan(2);
+    });
+
+    it('should handle concurrent compilations efficiently', () => {
+      const iterations = 100;
+      const concurrent = 10;
+
+      const start = performance.now();
+
+      const promises = Array.from({ length: concurrent }, () => {
+        return Promise.resolve().then(() => {
+          for (let i = 0; i < iterations; i++) {
+            query()
+              .where('status').equals('active')
+              .and('age').greaterThan(18)
+              .compile();
+          }
+        });
+      });
+
+      return Promise.all(promises).then(() => {
+        const end = performance.now();
+        const totalTime = end - start;
+        const avgTime = totalTime / (iterations * concurrent);
+
+        console.log(`Concurrent compilations (${concurrent} parallel): ${avgTime.toFixed(3)}ms per compilation`);
+        console.log(`Total time: ${totalTime.toFixed(2)}ms`);
+
+        expect(avgTime).toBeLessThan(2);
+      });
+    });
+  });
+
+  describe('Debug mode overhead', () => {
+    it('should measure debug mode performance impact', () => {
+      const iterations = 1000;
+
+      // Without debug
+      const normalStart = performance.now();
+      for (let i = 0; i < iterations; i++) {
+        query()
+          .where('status').equals('active')
+          .and('age').greaterThan(18)
+          .compile();
+      }
+      const normalEnd = performance.now();
+      const normalTime = (normalEnd - normalStart) / iterations;
+
+      // With debug
+      const debugStart = performance.now();
+      for (let i = 0; i < iterations; i++) {
+        query({ debug: true })
+          .where('status').equals('active')
+          .and('age').greaterThan(18)
+          .compile();
+      }
+      const debugEnd = performance.now();
+      const debugTime = (debugEnd - debugStart) / iterations;
+
+      console.log(`Normal mode: ${normalTime.toFixed(3)}ms`);
+      console.log(`Debug mode: ${debugTime.toFixed(3)}ms`);
+      console.log(`Debug overhead: ${((debugTime / normalTime - 1) * 100).toFixed(1)}%`);
+
+      // Debug mode adds overhead for AST cloning and timing, but absolute time is still fast
+      expect(debugTime).toBeLessThan(0.05); // Should be under 0.05ms per query
+      expect(normalTime).toBeLessThan(0.02); // Normal mode should be under 0.02ms
+    });
+  });
+});
