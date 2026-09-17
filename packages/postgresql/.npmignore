@@ -1,0 +1,9 @@
+# Exclude test files that might end up in dist
+*.test.js
+*.test.d.ts
+*.test.js.map
+*.test.d.ts.map
+*.spec.js
+*.spec.d.ts
+*.spec.js.map
+*.spec.d.ts.map

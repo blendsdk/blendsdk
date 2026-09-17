@@ -1,0 +1,56 @@
+{
+  "name": "@blendsdk/webafx-authz",
+  "version": "5.58.0",
+  "description": "WebAFX route authorization helpers and provider claim translation glue",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/blendsdk/blendsdk.git",
+    "directory": "packages/webafx-authz"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rm -fR ./dist",
+    "test": "vitest run --reporter=verbose",
+    "test:watch": "vitest watch --reporter=verbose",
+    "test:coverage": "vitest run --coverage"
+  },
+  "dependencies": {
+    "@blendsdk/authz": "^5.58.0",
+    "jose": "^6.2.5"
+  },
+  "devDependencies": {
+    "@blendsdk/webafx": "^5.58.0",
+    "@blendsdk/webafx-auth": "^5.58.0",
+    "@types/node": "^26.1.2",
+    "@types/supertest": "^7.2.1",
+    "@vitest/coverage-v8": "^4.1.10",
+    "supertest": "^7.2.2",
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.10"
+  },
+  "peerDependencies": {
+    "@blendsdk/webafx": "^5.58.0",
+    "@blendsdk/webafx-auth": "^5.58.0"
+  },
+  "peerDependenciesMeta": {
+    "@blendsdk/webafx": {
+      "optional": true
+    },
+    "@blendsdk/webafx-auth": {
+      "optional": true
+    }
+  },
+  "license": "MIT",
+  "private": true
+}

@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "generatedAt": "2026-05-20T14:18:24.444Z",
+  "guides": {
+    "rest-api": {
+      "hash": "72640523755be5f47b693a52fa5911b9f9f2d4791629f7fd1e4eec75aa36508d",
+      "generatedAt": "2026-05-20T14:13:41.352Z"
+    },
+    "database": {
+      "hash": "a593dc771d0e88960d062ab47565fc1344e567ab19a362662ef50e8403d7802d",
+      "generatedAt": "2026-05-20T14:13:50.982Z"
+    },
+    "caching": {
+      "hash": "03590aabd44830c2d0d3adbcf3171c8f14ca4748c0e074248f407d9ca1666421",
+      "generatedAt": "2026-05-20T14:14:00.022Z"
+    },
+    "authentication": {
+      "hash": "fee958cafec1c54a5c3f513ce73c1b1ab0ff6c165bca72163459a224ee684657",
+      "generatedAt": "2026-05-20T14:14:11.359Z"
+    },
+    "email": {
+      "hash": "5df8776109fbe91d355ae568eebe2f193f624f8cbfa24c901b51e45e14431b56",
+      "generatedAt": "2026-05-20T14:14:21.824Z"
+    },
+    "i18n": {
+      "hash": "ef7ea18045050b0a83e448c80a2baa28494d895faa009352c684bdea7c3296d0",
+      "generatedAt": "2026-05-20T14:14:30.943Z"
+    },
+    "logging": {
+      "hash": "a4e51d0a62164495b84c971a057daecdf416bcdaeceda2195ee19a693e0c45bb",
+      "generatedAt": "2026-05-20T14:14:39.619Z"
+    },
+    "code-generation": {
+      "hash": "766feadba54fa0b9e9016a1fd74d48707e023dac2bac2e3630d80009a72d81b6",
+      "generatedAt": "2026-05-20T14:14:50.235Z"
+    },
+    "react": {
+      "hash": "a36979bfca5a17a00e22c05d711dba5d8b178b2e0b1b7e2570aaa8e25632c345",
+      "generatedAt": "2026-05-20T14:15:01.665Z"
+    },
+    "stdlib": {
+      "hash": "1e8c227c0b8e84827d753abc2164ea635a45c4da18dc85b91dfcc0507c7f59e6",
+      "generatedAt": "2026-05-20T14:15:13.646Z"
+    },
+    "cmdline": {
+      "hash": "f7982120c618617d2da46b4c99b257fff5a9a717bfcdb8c085d31ad02090307e",
+      "generatedAt": "2026-05-20T14:15:23.210Z"
+    },
+    "installation": {
+      "hash": "5f3a783639c4f8441a36d6ed220648b36ec14a51b6cd0fb58be62e5afcd44e55",
+      "generatedAt": "2026-05-20T14:15:33.826Z"
+    },
+    "quick-start": {
+      "hash": "50ac775890322234eeeef3c9f22ce7ece8c7ecddc861c1f7cda2f4f634ad5f71",
+      "generatedAt": "2026-05-20T14:15:41.817Z"
+    },
+    "architecture": {
+      "hash": "5f3a783639c4f8441a36d6ed220648b36ec14a51b6cd0fb58be62e5afcd44e55",
+      "generatedAt": "2026-05-20T14:15:53.828Z"
+    },
+    "guides-index": {
+      "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "generatedAt": "2026-05-20T14:15:59.401Z"
+    },
+    "landing": {
+      "hash": "5f3a783639c4f8441a36d6ed220648b36ec14a51b6cd0fb58be62e5afcd44e55",
+      "generatedAt": "2026-05-20T14:16:08.093Z"
+    }
+  }
+}

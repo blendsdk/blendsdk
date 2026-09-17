@@ -1,0 +1,5 @@
+{
+    "greeting": { "en": "Hello ${name}", "nl": "Hallo ${name}" },
+    "farewell": { "en": "Goodbye", "nl": "Tot ziens" },
+    "book": { "en": ["${count} book", "${count} books"], "nl": ["${count} boek", "${count} boeken"] }
+}

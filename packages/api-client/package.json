@@ -1,0 +1,35 @@
+{
+  "name": "@blendsdk/api-client",
+  "version": "5.58.0",
+  "private": true,
+  "description": "Framework-agnostic typed HTTP client runtime for BlendSDK APIs",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/blendsdk/blendsdk.git",
+    "directory": "packages/api-client"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rm -fR ./dist",
+    "test": "vitest run --passWithNoTests --reporter=verbose",
+    "test:fast": "vitest run --passWithNoTests --reporter=verbose",
+    "test:watch": "vitest watch --reporter=verbose",
+    "test:coverage": "vitest run --passWithNoTests --coverage"
+  },
+  "devDependencies": {
+    "@vitest/coverage-v8": "^4.1.10",
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.10"
+  }
+}
