@@ -1,0 +1,13 @@
+src/
+tests/
+examples/
+docs/
+*.test.ts
+*.spec.ts
+tsconfig.json
+vitest.config.ts
+.DS_Store
+node_modules/
+coverage/
+.env
+.env.*

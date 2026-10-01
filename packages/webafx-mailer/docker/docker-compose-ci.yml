@@ -1,0 +1,15 @@
+services:
+  mailpit:
+    image: axllent/mailpit:latest
+    container_name: webafx-mailer-mailpit-ci
+    ports:
+      - "1025:1025"   # SMTP server
+      - "8025:8025"   # REST API (needed for assertions)
+    environment:
+      MP_SMTP_AUTH_ACCEPT_ANY: 1
+      MP_SMTP_AUTH_ALLOW_INSECURE: 1
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:8025/api/v1/messages"]
+      interval: 5s
+      timeout: 3s
+      retries: 5

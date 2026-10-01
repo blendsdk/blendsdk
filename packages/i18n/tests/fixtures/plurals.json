@@ -1,0 +1,3 @@
+{
+    "item": { "en": ["${count} item", "${count} items"], "nl": ["${count} artikel", "${count} artikelen"] }
+}

@@ -1,0 +1,8 @@
+{
+  "name": "@blendsdk/package-a",
+  "version": "1.0.0",
+  "description": "Fixture package used by the skill generator tests.",
+  "private": true,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts"
+}
