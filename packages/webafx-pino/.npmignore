@@ -1,0 +1,10 @@
+src/
+tests/
+docker/
+docs/
+ai-training/
+tsconfig.json
+vitest.config.ts
+.gitignore
+*.test.ts
+*.test.js

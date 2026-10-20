@@ -1,0 +1,17 @@
+services:
+  postgres-test:
+    image: pgvector/pgvector:pg15    
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_HOST_AUTH_METHOD: trust
+    volumes:
+      - /tmp/blendsdk/codegen/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+    ports:
+      - 5597:5432
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d postgresql_test"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 10s

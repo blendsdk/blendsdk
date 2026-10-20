@@ -1,0 +1,16 @@
+packages:
+  - 'packages/*'
+  - 'packages/*/*'
+
+linkWorkspacePackages: true
+preferWorkspacePackages: true
+saveWorkspaceProtocol: false
+
+# Lifecycle scripts are blocked by default (pnpm 10+). Only reviewed packages run theirs.
+# esbuild: postinstall selects/validates the platform binary used by tsx/vite/vitest.
+# bcrypt:  install builds or selects the native addon.
+# fsevents: install is macOS-only file-watching support.
+allowBuilds:
+  esbuild: true
+  bcrypt: true
+  fsevents: true
