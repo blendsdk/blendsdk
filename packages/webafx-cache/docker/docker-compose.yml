@@ -1,0 +1,12 @@
+services:
+  redis-test:
+    image: redis:7-alpine
+    container_name: webafx-cache-redis-test
+    ports:
+      - "6399:6379"
+    command: redis-server --appendonly no
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
